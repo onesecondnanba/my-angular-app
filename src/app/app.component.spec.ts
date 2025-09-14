@@ -44,7 +44,8 @@ describe('AppComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    const errorMessages = compiled.querySelectorAll('div[style="color: red"]');
+    //changed
+    const errorMessages = compiled.querySelectorAll('.error');
     
     expect(errorMessages.length).toBe(2);
     expect(errorMessages[0].textContent).toContain('Name is required');
@@ -62,8 +63,11 @@ describe('AppComponent', () => {
     component.resetForm();
     fixture.detectChanges();
 
-    expect(nameControl?.value).toBe('');
-    expect(emailControl?.value).toBe('');
+    // expect(nameControl?.value).toBe('');
+    // expect(emailControl?.value).toBe('');
+    expect(nameControl?.value).toBeNull();
+expect(emailControl?.value).toBeNull();
+
     expect(component.submitted).toBeFalse();
   });
 

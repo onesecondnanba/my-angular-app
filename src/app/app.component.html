@@ -6,7 +6,7 @@
       Name:
       <input type="text" formControlName="name">
     </label>
-    <div *ngIf="submitted && userForm.get('name')?.invalid" style="color: red">
+    <div *ngIf="submitted && userForm.get('name')?.invalid" class="error" style="color: red">
       Name is required.
     </div>
 
@@ -14,7 +14,7 @@
       Email:
       <input type="email" formControlName="email">
     </label>
-    <div *ngIf="submitted && userForm.get('email')?.invalid" style="color: red">
+    <div *ngIf="submitted && userForm.get('email')?.invalid" class="error" style="color: red">
       Valid email is required.
     </div>
 
