@@ -1,5 +1,5 @@
 # MyAngularApp
-
+https://docs.google.com/document/d/1XVG_SUNPu2FXwd35hlQVFxewV04WEutpeY-dEyicNLc/edit?tab=t.rog0c0op21vw
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
 
 ## Development server
