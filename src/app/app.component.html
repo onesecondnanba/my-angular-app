@@ -1,24 +1,67 @@
-<div class="p-4">
+
   <h1>{{ title }}</h1>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <!-- Name -->
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+  <div *ngIf="submitted && userForm.get('name')?.invalid" class="error" style="color: red">
+    Name is required.
+  </div>
 
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <!-- Email -->
+  <label>
+    Email:
+    <input type="email" formControlName="email">
+  </label>
+  <div *ngIf="submitted && userForm.get('email')?.invalid" class="error" style="color: red">
+    Valid email is required.
+  </div>
+
+  <!-- Password -->
+  <label>
+    Password:
+    <input type="password" formControlName="password">
+  </label>
+  <div *ngIf="submitted && userForm.get('password')?.invalid" class="error" style="color: red">
+    Password is required.
+  </div>
+
+  <!-- Confirm Password -->
+  <label>
+    Confirm Password:
+    <input type="password" formControlName="confirmPassword">
+  </label>
+  <div *ngIf="submitted && userForm.hasError('passwordMismatch')" class="error" style="color: red">
+    Passwords do not match.
+  </div>
+
+  <!-- Security Deposit -->
+  <label>
+    Security Deposit:
+    <input type="number" formControlName="deposit">
+  </label>
+  <div *ngIf="userForm.get('deposit')?.value > 50" class="warning" style="color: orange">
+    Are you sure? Deposit is high.
+  </div>
+
+  <!-- Old Customer Checkbox -->
+  <label>
+    <input type="checkbox" formControlName="isOldCustomer"> Are u an Old Customer
+  </label>
+
+  <!-- Customer ID if Old Customer -->
+  <div *ngIf="userForm.get('isOldCustomer')?.value">
     <label>
-      Name:
-      <input type="text" formControlName="name">
+      Customer ID:
+      <input type="text" formControlName="customerId">
     </label>
-    <div *ngIf="submitted && userForm.get('name')?.invalid" class="error" style="color: red">
-      Name is required.
+    <div *ngIf="submitted && userForm.get('customerId')?.invalid" class="error" style="color: red">
+      Customer ID is required for old customers.
     </div>
+  </div>
 
-    <label>
-      Email:
-      <input type="email" formControlName="email">
-    </label>
-    <div *ngIf="submitted && userForm.get('email')?.invalid" class="error" style="color: red">
-      Valid email is required.
-    </div>
-
-    <button type="submit">Submit</button>
-    <button type="button" (click)="resetForm()">Reset</button>
-  </form>
-</div>
+  <button type="submit">Submit</button>
+  <button type="button" (click)="resetForm()">Reset</button>
+</form>
